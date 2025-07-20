@@ -8,7 +8,7 @@ RUN npm ci
 
 COPY . ./
 
-RUN npm build
+RUN npm run build
 
 FROM nginx:latest AS production
 
