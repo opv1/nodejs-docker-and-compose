@@ -6,30 +6,26 @@ services:
       - internal
     ports:
       - '5432:5432'
-    env_file:
-      - ./backend/.env
+    env_file: .env
     volumes:
       - pgdata:/var/lib/postgresql/data
     restart: always
 
   backend:
     container_name: kupipodariday-backend
-    build:
-      context: ./backend
+    image: opv1/kupipodariday-backend
     networks:
       - internal
     ports:
       - '4000:3000'
-    env_file:
-      - ./backend/.env
+    env_file: .env
     depends_on:
       - database
     restart: always
 
   frontend:
     container_name: kupipodariday-frontend
-    build:
-      context: ./frontend
+    image: opv1/kupipodariday-frontend
     networks:
       - external
     ports:
